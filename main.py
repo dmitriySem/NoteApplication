@@ -1,6 +1,8 @@
 # This is a sample Python script.
 import json
 
+import EditNote
+
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -13,6 +15,11 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    #login = input('Ваедите логин пользователя: ')
+    login = 'user1'
+    N = EditNote.EditNote('./'+ login + '.json')
+    N.save_note(N.add_note())
+    '''
     data = {
         "president": {
             "name": "Zaphod Beeblebrox",
@@ -20,9 +27,10 @@ if __name__ == '__main__':
         }
     }
     # print(data.get("president").get("name"))
-    with open("data_file.json", "w") as write_file:
+    with open("user1.json", "w") as write_file:
        #json.dump(data, write_file)
        json_string = json.dumps(data)
+    '''
 
 
 
