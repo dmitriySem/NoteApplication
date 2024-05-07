@@ -18,7 +18,9 @@ if __name__ == '__main__':
     #login = input('Ваедите логин пользователя: ')
     login = 'user1'
     N = EditNote.EditNote('./'+ login + '.json')
-    N.save_note(N.add_note())
+    N.search_note(False)
+    #N.print_notes(N.read_file())
+    #N.save_note(N.create_note())
     '''
     data = {
         "president": {
