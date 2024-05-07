@@ -14,7 +14,7 @@ class EditNote:
         print(self.__nameFile)
         idtemp = self.get_id() + 1
         new_note = {
-            "id": str(idtemp),
+            "id": int(idtemp),
             "header": self.input_header(),
             "body": self.input_body(),
             "date": (self.get_dateTime()).strftime("%d-%m-%Y %H:%M:%S")
@@ -22,9 +22,11 @@ class EditNote:
         return new_note
 
     def save_note(self, new_data):
-        self.read_file()['notes'].append(new_data)
+        mylist = self.read_file()
+        mylist["notes"].append(new_data)
+        #print(mylist)
         file_json = open(self.__nameFile, 'w', encoding='utf-8')
-        json.dump(new_data, file_json, ensure_ascii=False)
+        json.dump(mylist, file_json, ensure_ascii=False)
 
 
     def input_header(self):
