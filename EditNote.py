@@ -57,37 +57,101 @@ class EditNote:
 
     def read_note(self):
         dictNotes = self.read_file()
-        self.print_heders(dictNotes)
-        list = self.search_note(False)
-        #headerNote = self.input_text('Ваедите название заметки, которую хотите открыть: ')
-        #listNotes = dictNotes['notes']
+        list = self.search_note()
+        return list
 
 
 
 
-    def search_note(self, flag):
-        '''print(
+
+    def search_note(self):
+        print(
             'Возможные варианты поиска: \n'
             '1. По названию \n'
             '2. По тексту заметки \n'
             '3. По дате'
         )
-
+        listNotes = self.read_file()['notes']
         var = input('Выберите вариант действий: ')
         while var not in ('1', '2', '3'):
             print('Некоректный ввод!')
             var = input('Выберите вариант действий: ')
-        i_var = int(var) - 1
-        '''
-        search = input('Введите данные для поиска: ')
-        listNotes = self.read_file()['notes']
-        #print((listNotes))
 
-        for note in listNotes:
-            if search in note.values():
-                return note
-        return {}
+        list = []
+        match var:
+            case "1":
+                search = input('Введите название заметки для поиска: ')
+                for note in listNotes:
+                    if search in note["header"]:
+                        list.append(note)
+                if (len(list) > 1 and len(list) != 0 ):
+                    print("Нашлось несколько заметок, укажите необходимую заметку")
+                    self.__correct_search(list)
+                    return list
+                else:
+                    return list
+                #return list
+            case "2":
+                search = input('Введите содержимое заметки для поиска: ')
+                for note in listNotes:
+                    if search in note["body"]:
+                        list.append(note)
+                if (len(list) > 1 and len(list) != 0):
+                    print("Нашлось несколько заметок, укажите необходимую заметку")
+                    self.__correct_search(list)
+                    return list
+                else:
+                    return list
+                 #       return note
+            case "3":
+                search = input('Введите дату (в формате dd-mm-yyyy)  создания или изменения заметки для поиска: ')
+                list = []
+                for note in listNotes:
+                    if search in note["date"]:
+                        list.append(note)
+                if (len(list) > 1 and len(list) != 0 ):
+                    print("Нашлось несколько заметок, укажите необходимую заметку")
+                    self.__correct_search(list)
+                    return list
+                else:
+                    return list
+
+        if(len(list) == 0):
+            print("Заметки с указанными параметрами не нашлись")
+            return []
+        else:
+            return list
                 #self.print_note(note)
+
+    def __correct_search(self, list):
+        for i in range(len(list)):
+            print("Заметка №{}".format(i))
+            self.print_note(list[i])
+            # self.print_heders(list[0])
+        return list[int(input("Введите номер заметки:"))]
+
+    def remove_note(self, note):
+        pass
+
+    def edit_note(self):
+        print("Укажите какую заметку нужно отредактировать")
+        note = self.search_note()[0]
+        while(True):
+            flag_header = input("Нужно отредактировать заголовок? Да/Нет\n")
+            if (flag_header.__eq__("Да")):
+                note["header"] = input("Укажите новый заголовок заметки: ")
+                note["date"] = (self.get_dateTime()).strftime("%d-%m-%Y %H:%M:%S")
+
+            flag_body = input("Нужно отредактировать текст заметки? Да/Нет \n")
+            if (flag_body.__eq__("Да")):
+                note["body"] = input("Укажите новый текст заметки: ")
+                note["date"] = (self.get_dateTime()).strftime("%d-%m-%Y %H:%M:%S")
+
+            if (flag_header.__eq__("Нет") and flag_body.__eq__("Нет")):
+                self.save_note(note)
+                break
+
+
 
 
     def input_text(self, strHeader):

@@ -18,7 +18,9 @@ if __name__ == '__main__':
     #login = input('Ваедите логин пользователя: ')
     login = 'user1'
     N = EditNote.EditNote('./'+ login + '.json')
-    N.search_note(False)
+    N.edit_note()
+
+    #print(N.search_note())
     #N.print_notes(N.read_file())
     #N.save_note(N.create_note())
     '''
