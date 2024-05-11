@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a32e05-69db-40b5-a84c-7a052d6a47f6" name="Changes" comment="Не полностью реализовал поиск заметок и чтение заметки">
+    <list default="true" id="50a32e05-69db-40b5-a84c-7a052d6a47f6" name="Changes" comment="Реализовал поиск заметок и чтение заметки. Не доделал удаление заметки, редактирование">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EditNote.py" beforeDir="false" afterPath="$PROJECT_DIR$/EditNote.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715066703622</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Реализовал поиск заметок и чтение заметки. Не доделал удаление заметки, редактирование">
+      <option name="closed" value="true" />
+      <created>1715288977530</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715288977530</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +157,7 @@
     <MESSAGE value="при сохранение удаляет все старые записи" />
     <MESSAGE value="Поправил сохранение заметок" />
     <MESSAGE value="Не полностью реализовал поиск заметок и чтение заметки" />
-    <option name="LAST_COMMIT_MESSAGE" value="Не полностью реализовал поиск заметок и чтение заметки" />
+    <MESSAGE value="Реализовал поиск заметок и чтение заметки. Не доделал удаление заметки, редактирование" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализовал поиск заметок и чтение заметки. Не доделал удаление заметки, редактирование" />
   </component>
 </project>

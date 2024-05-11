@@ -131,23 +131,30 @@ class EditNote:
         return list[int(input("Введите номер заметки:"))]
 
     def remove_note(self, note):
-        pass
+        notes = self.read_file()
+        #print(note['header'])
+        notes['notes'] = list(filter(lambda x: x.get('header') != note['header'], notes.get('notes', [])))
+        file_json = open(self.__nameFile, 'w', encoding='utf-8')
+        return json.dump(notes, file_json, ensure_ascii=False)
+
 
     def edit_note(self):
         print("Укажите какую заметку нужно отредактировать")
         note = self.search_note()[0]
+        self.remove_note(note)
         while(True):
-            flag_header = input("Нужно отредактировать заголовок? Да/Нет\n")
-            if (flag_header.__eq__("Да")):
+            flag_header = input("Нужно отредактировать заголовок? Да/Нет\n").lower()
+            if (flag_header.__eq__("да") or flag_header.__eq__("yes") or flag_header.__eq__("y") or flag_header.__eq__("lf") or flag_header.__eq__("нуы") or flag_header.__eq__("д")):
                 note["header"] = input("Укажите новый заголовок заметки: ")
                 note["date"] = (self.get_dateTime()).strftime("%d-%m-%Y %H:%M:%S")
 
-            flag_body = input("Нужно отредактировать текст заметки? Да/Нет \n")
-            if (flag_body.__eq__("Да")):
+            flag_body = input("Нужно отредактировать текст заметки? Да/Нет \n").lower()
+            if (flag_body.__eq__("да") or flag_body.__eq__("yes") or flag_body.__eq__("y") or flag_body.__eq__("lf") or flag_body.__eq__("нуы") or flag_body.__eq__("д")):
                 note["body"] = input("Укажите новый текст заметки: ")
                 note["date"] = (self.get_dateTime()).strftime("%d-%m-%Y %H:%M:%S")
 
-            if (flag_header.__eq__("Нет") and flag_body.__eq__("Нет")):
+            flag_cont = input("Хотите отредактировать измененную заметку? Да/Нет").lower()
+            if (flag_cont.__eq__("нет") or flag_cont.__eq__("no") or flag_cont.__eq__("n") or flag_cont.__eq__("ytn") or flag_cont.__eq__("тщ") or flag_cont.__eq__("н")):
                 self.save_note(note)
                 break
 
